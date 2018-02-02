@@ -94,7 +94,7 @@ def get_bearings(d, D, f_a, f_r, l):
         # if bearing list is empty, i.e. don't have the size etc.
         print '\nNo bearings with those diameters, try with different sizes!\n'
     else:
-        bearingList.sort(key=lambda x: x.C, reverse=False)  # ascending sort of the selected bearings based on C
+        bearingList.sort(key=lambda x: x.C)  # ascending sort of the selected bearings based on C
         c_values = []
         bearing_candidates = []
         (c, case) = get_forces(f_a, f_r, l)
