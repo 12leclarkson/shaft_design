@@ -70,17 +70,17 @@ def get_inputs():
 def get_bearings(d, D, f_a, f_r, l_ten):
     if D == '':
         # no outer diameter given
-        db.execute("SELECT * FROM SKF_Single_Row_Deep_Groove_Bearings WHERE D_lower = ?", (d,))
+        db.execute("SELECT * FROM SKF_Single_Row_Deep_Groove_Bearings_Final WHERE D_lower = ?", (d,))
     elif d == '':
         # no inner diameter given
-        db.execute("SELECT * FROM SKF_Single_Row_Deep_Groove_Bearings WHERE D_upper = ?", (D,))
+        db.execute("SELECT * FROM SKF_Single_Row_Deep_Groove_Bearings_Final WHERE D_upper = ?", (D,))
     else:
         # if the outer diameter is smaller than the inner (impossible!)
         if int(D) <= int(d):
             print "\nShaft diameter must be smaller than outer diameter "
         else:
             # case when both inner & outer diameter are given
-            db.execute("SELECT * FROM SKF_Single_Row_Deep_Groove_Bearings WHERE D_lower = ? AND D_upper = ?", (d, D))
+            db.execute("SELECT * FROM SKF_Single_Row_Deep_Groove_Bearings_Final WHERE D_lower = ? AND D_upper = ?", (d, D))
     fetchedBearings = db.fetchall()
 
     for bearing in fetchedBearings:
@@ -103,7 +103,7 @@ def get_bearings(d, D, f_a, f_r, l_ten):
         for i in bearingList:  # cycle through dia selected bearings
             if c < i.C:  # check the c rating for the bearing vs calculated c
                 db.execute(
-                    "SELECT * FROM SKF_Single_Row_Deep_Groove_Bearings WHERE C = ? AND D_lower = ? ",
+                    "SELECT * FROM SKF_Single_Row_Deep_Groove_Bearings_Final WHERE C = ? AND D_lower = ? ",
                     (i.C, d,))  # select  from db
                 data = db.fetchall()
                 if not data:  # no bearings case
