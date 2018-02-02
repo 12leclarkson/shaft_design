@@ -67,7 +67,7 @@ def get_inputs():
     return variables  # return the list
 
 
-def get_bearings(d, D, f_a, f_r, l):
+def get_bearings(d, D, f_a, f_r, l_ten):
     if D == '':
         # no outer diameter given
         db.execute("SELECT * FROM SKF_Single_Row_Deep_Groove_Bearings WHERE D_lower = ?", (d,))
@@ -97,7 +97,7 @@ def get_bearings(d, D, f_a, f_r, l):
         bearingList.sort(key=lambda x: x.C)  # ascending sort of the selected bearings based on C
         c_values = []
         bearing_candidates = []
-        (c, case) = get_forces(f_a, f_r, l)
+        (c, case) = get_forces(f_a, f_r, l_ten)
         c = round(c / 1000.0, 2)
         print '\nPre-lim suitable bearings: '
         for i in bearingList:  # cycle through dia selected bearings
@@ -121,10 +121,10 @@ def get_bearings(d, D, f_a, f_r, l):
                     bearing_candidates.append(prelim_bearing)  # add data to candidate list
                     c_values.append(prelim_bearing.C)
                     print prelim_bearing.designation
-        check(bearing_candidates, f_a, f_r, l, case)
+        check(bearing_candidates, f_a, f_r, l_ten, case)
 
 
-def get_forces(f_a, f_r, l):
+def get_forces(f_a, f_r, l_ten):
     if f_r == 0 and f_a != "":
         # case if f_r = 0 and f_a has value
         f = f_a
@@ -144,12 +144,12 @@ def get_forces(f_a, f_r, l):
         case = 3
 
     print '\nUncorrected force: ', int(f), 'N'
-    c = f * l ** (1.0 / 3.0)
+    c = f * l_ten ** (1.0 / 3.0)
 
     return (c, case)
 
 
-def check(bearing_candidates, f_a, f_r, l, case):
+def check(bearing_candidates, f_a, f_r, l_ten, case):
     # check if the original bearings selected are still usable (base selection on forces, not just diameter)
     good_bearings = []  # create empty list to store bearings that are suitable (after this test)
     for factor in cal_factors_data:
@@ -191,7 +191,7 @@ def check(bearing_candidates, f_a, f_r, l, case):
                         Y = data[1][3] + ((adjustment - data[1][0]) / (data[0][0] - data[1][0])) * (
                             data[0][3] - data[1][3])
                         f_new = X * f_r + Y * f_a
-                        c_min = f_new * l ** (1.0 / 3.0)
+                        c_min = f_new * l_ten ** (1.0 / 3.0)
                         if c_min / 1000 <= bearing.C:  # compare the new cmin value to the actual bearing value
                             good_bearings.append(bearing.designation)  # add to usable bearings if condition is met
                             break
@@ -217,20 +217,20 @@ def __main__():
     iteration = 1
     while True:
         print 'Iteration', iteration
-        inputData = get_inputs()  # get inputs and put into usable list
+        input_data = get_inputs()  # get inputs and put into usable list
         # insert the list to usable variables
-        d = inputData[0]
-        D = inputData[1]
-        partDia = inputData[2]
-        life = inputData[3]
-        use = inputData[4]
-        f_r = inputData[5]
-        f_a = inputData[6]
-        vel = inputData[7]
-        useTime = use * life * 365 * 60  # convert use time to seconds
-        revs = 60 * vel / (partDia * pi)  # calculate the revolutions from diameter of part and velocity
-        l = (useTime * revs) / 1000000  # calculate L10
-        get_bearings(d, D, f_a, f_r, l)
+        d = input_data[0]
+        D = input_data[1]
+        part_dia = input_data[2]
+        life = input_data[3]
+        use = input_data[4]
+        f_r = input_data[5]
+        f_a = input_data[6]
+        vel = input_data[7]
+        use_time = use * life * 365 * 60  # convert use time to seconds
+        revs = 60 * vel / (part_dia * pi)  # calculate the revolutions from diameter of part and velocity
+        l_ten = (use_time * revs) / 1000000  # calculate L10
+        get_bearings(d, D, f_a, f_r, l_ten)
         iteration += 1
 
 
