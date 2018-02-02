@@ -1,9 +1,9 @@
 import sqlite3
 from math import pi
 
-conn = sqlite3.connect('Bearings.db')
+conn = sqlite3.connect('Bearings.db')   # connect to the bearing db
 db = conn.cursor()
-bearingList = []
+bearingList = []    # set empty list for first selection to be stored in
 
 db.execute("SELECT f0_Fa_C0 FROM cal_factors ")  # get correction factors from db
 cal_factors_data = db.fetchall()
@@ -211,7 +211,6 @@ def check(bearing_candidates, f_a, f_r, l, case):
             exit()
         else:
             print 'No bearings are suitable for this situations\n Retry with different values\n'
-
 
 
 def __main__():
