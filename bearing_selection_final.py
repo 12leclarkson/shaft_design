@@ -155,7 +155,8 @@ def check(bearing_candidates, f_a, f_r, l_ten, case):
     for factor in cal_factors_data:
         # convert db data to a usable form
         cal_factors.append(factor[0])
-    good_bearings = []
+    corrected_forces = []
+    unsure_bearings = []    # for the case we can't interpolate e
     if case == 1 or case == 2:
         print 'No force correction needed because one force was given'
         print 'Usable bearings:'
@@ -181,7 +182,7 @@ def check(bearing_candidates, f_a, f_r, l_ten, case):
                         "SELECT f0_Fa_C0, e_N,X_N,Y_N FROM cal_factors WHERE f0_Fa_C0 <=? ORDER BY f0_Fa_C0 DESC LIMIT 2 ",
                         (closest_f0,))  # get the upper and lower values for e
                     data = db.fetchall()
-                    #print data
+                    print data
                     try:
                         e = data[0][1] + (adjustment - data[0][0]) / (data[1][0] - data[0][0]) * (data[1][1] - data[0][1])
                         # calculate e by interpolation!
@@ -195,6 +196,7 @@ def check(bearing_candidates, f_a, f_r, l_ten, case):
                             # f_new = X * f_r + Y * f_a
                             f_new = f_r
                             print 'No force adjustment for', bearing.designation
+                            corrected_forces.append(f_new)
                             good_bearings.append(bearing.designation)
                             break
                         else:
@@ -205,6 +207,7 @@ def check(bearing_candidates, f_a, f_r, l_ten, case):
                             Y = data[1][3] + ((adjustment - data[1][0]) / (data[0][0] - data[1][0])) * (
                                     data[0][3] - data[1][3])
                             f_new = X * f_r + Y * f_a
+                            corrected_forces.append(f_new)
                             c_min = f_new * l_ten ** (1.0 / 3.0)
                             if c_min / 1000 <= bearing.C:  # compare the new cmin value to the actual bearing value
                                 good_bearings.append(bearing.designation)  # add to usable bearings if condition is met
@@ -214,20 +217,23 @@ def check(bearing_candidates, f_a, f_r, l_ten, case):
                                 print bearing.designation, 'is not suitable when axial force is considered'
                                 break
                     except IndexError:
+                        unsure_bearings.append(bearing.designation)
                         print "The value of adjustment to interpolate for e is outside of the range of the " \
                               "data we have!" \
                               "\nmoving onto the next bearing and excluding this one"
-
-
+                        break
                 else:  # if the r value is greater than the current correction factor, try the next value
                     pass
 
-        print '\nThe corrected force =', int(f_new), 'N\n'  # return the corrected force
         if good_bearings:
             # print the usable bearings in the list
-            print 'Usable bearings:'
+            print '\nUsable bearings:'
             for checked in good_bearings:
-                print checked
+                print str(checked).ljust(10), '|', 'Force:', \
+                    round(corrected_forces[good_bearings.index(checked)], 0), 'N'
+            print '\nUnsure bearings:'
+            for checked in unsure_bearings:
+                print str(checked)
             exit()
         else:
             print 'No bearings are suitable for this situations\nRetry with different values\n'
