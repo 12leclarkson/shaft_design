@@ -100,7 +100,7 @@ def get_bearings(d, D, f_a, f_r, l_ten):
         (c, case) = get_forces(f_a, f_r, l_ten)
         c = round(c / 1000.0, 2)
         print '\nPre-lim suitable bearings: '
-        for i in bearingList:  # cycle through dia selected bearings
+        for i in bearingList:  # cycle through bearings that were selected by diameter
             if c < i.C:  # check the c rating for the bearing vs calculated c
                 db.execute(
                     "SELECT * FROM SKF_Single_Row_Deep_Groove_Bearings_Final WHERE C = ? AND D_lower = ? ",
@@ -134,7 +134,7 @@ def get_forces(f_a, f_r, l_ten):
         # case if f_a = 0 and f_r has value
         f = f_r
         case = 2
-    elif f_a != "" and f_r != "":
+    else:
         # case if f_a and f_r have values
         # use larger force to find c for worst case scenario
         if f_a >= f_r:
@@ -165,40 +165,60 @@ def check(bearing_candidates, f_a, f_r, l_ten, case):
     elif case == 3:
         print '\nNow checking if selection is still appropriate'
         for bearing in bearing_candidates:
+            print good_bearings
+            print '\n', bearing.designation
             adjustment = float((bearing.f0 * f_a) / (bearing.C0 * 1000.0))  # this is r, r = f0*fa/C0
+            #print '\n', bearing.designation
+            #print 'adj', adjustment
+
             for var in cal_factors:  # for each correction factor value in db
+                #print var
                 if adjustment < var:  # if the r value is < the current table value of fr_Fa_C0 from db
                     closest_f0 = var  # the closest value of f0 = current correction factor
                     # this loop selects the upper and lower values to interpolate for e
+                    #print 'adjustment < var'
                     db.execute(
                         "SELECT f0_Fa_C0, e_N,X_N,Y_N FROM cal_factors WHERE f0_Fa_C0 <=? ORDER BY f0_Fa_C0 DESC LIMIT 2 ",
                         (closest_f0,))  # get the upper and lower values for e
                     data = db.fetchall()
-                    e = data[0][1] + (adjustment - data[0][0]) / (data[1][0] - data[0][0]) * (data[1][1] - data[0][1])
-                    # calculate e by interpolation!
-                    if f_a / f_r <= e:
-                        # if the ratio of the axial/radial force is < e, set correction factors as y = 1, x = 0
-                        # i.e. there is no change in the force used to select the bearing
-                        # X = 1
-                        # Y = 0
-                        # f_new = X * f_r + Y * f_a
-                        f_new = f_r
-                        print 'No change!'
-                    else:
-                        # if the ratio of the axial/radial force is > e, set correction factors via interpolation
-                        # i.e. there is a change in the force used to select the bearing
-                        X = 0.56
-                        Y = data[1][3] + ((adjustment - data[1][0]) / (data[0][0] - data[1][0])) * (
-                            data[0][3] - data[1][3])
-                        f_new = X * f_r + Y * f_a
-                        c_min = f_new * l_ten ** (1.0 / 3.0)
-                        if c_min / 1000 <= bearing.C:  # compare the new cmin value to the actual bearing value
-                            good_bearings.append(bearing.designation)  # add to usable bearings if condition is met
+                    #print data
+                    try:
+                        e = data[0][1] + (adjustment - data[0][0]) / (data[1][0] - data[0][0]) * (data[1][1] - data[0][1])
+                        # calculate e by interpolation!
+                        print 'e', e
+                        if f_a / f_r <= e:
+                            #print 'fa/fr <= e'
+                            # if the ratio of the axial/radial force is < e, set correction factors as y = 1, x = 0
+                            # i.e. there is no change in the force used to select the bearing
+                            # X = 1
+                            # Y = 0
+                            # f_new = X * f_r + Y * f_a
+                            f_new = f_r
+                            print 'No force adjustment for', bearing.designation
+                            good_bearings.append(bearing.designation)
                             break
                         else:
-                            # this bearing is no longer suitable
-                            print bearing.designation, 'is not suitable when axial force is considered'
-                            break
+                            #print 'fa/fr > e'
+                            # if the ratio of the axial/radial force is > e, set correction factors via interpolation
+                            # i.e. there is a change in the force used to select the bearing
+                            X = 0.56
+                            Y = data[1][3] + ((adjustment - data[1][0]) / (data[0][0] - data[1][0])) * (
+                                    data[0][3] - data[1][3])
+                            f_new = X * f_r + Y * f_a
+                            c_min = f_new * l_ten ** (1.0 / 3.0)
+                            if c_min / 1000 <= bearing.C:  # compare the new cmin value to the actual bearing value
+                                good_bearings.append(bearing.designation)  # add to usable bearings if condition is met
+                                break
+                            else:
+                                # this bearing is no longer suitable
+                                print bearing.designation, 'is not suitable when axial force is considered'
+                                break
+                    except IndexError:
+                        print "The value of adjustment to interpolate for e is outside of the range of the " \
+                              "data we have!" \
+                              "\nmoving onto the next bearing and excluding this one"
+
+
                 else:  # if the r value is greater than the current correction factor, try the next value
                     pass
 
@@ -210,7 +230,7 @@ def check(bearing_candidates, f_a, f_r, l_ten, case):
                 print checked
             exit()
         else:
-            print 'No bearings are suitable for this situations\n Retry with different values\n'
+            print 'No bearings are suitable for this situations\nRetry with different values\n'
 
 
 def __main__():
