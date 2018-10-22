@@ -279,9 +279,9 @@ def check(bearing_candidates, f_a, f_r, l_ten, case):
             logging.info('Usable bearings:')
             print '\nUsable bearings:'
             for checked in good_bearings:
-                logging.info(str(checked).ljust(10) + '|' + 'Force:' +
+                logging.info(str(checked).ljust(10) + '|' + 'Force: ' +
                              str(round(corrected_forces[good_bearings.index(checked)], 0)) + ' N')
-                print str(checked).ljust(10), '|', 'Force:', \
+                print str(checked).ljust(10), '|', 'Force: ', \
                     round(corrected_forces[good_bearings.index(checked)], 0), 'N'
             if unsure_bearings:
                 print '\nUnsure bearings:'
@@ -328,4 +328,5 @@ def __main__():
         iteration += 1
 
 
-__main__()
+if __name__ == __main__():
+    __main__()
