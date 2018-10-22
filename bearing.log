@@ -1,0 +1,126 @@
+
+18/02/2018 21:53:59
+
+Iteration 1
+Shaft diameter (mm): 15
+Outer diameter (mm): 
+Part diameter (m): 0.48
+Design life (years): 10.0
+Average use per day (hours): 8.0
+Radial force (N): 711.225
+Axial force (N): 147.872
+Average velocity (m/s): 5.0
+use_time  1752000.0
+revs      198.943678865
+l_ten     348.549325371
+
+Getting bearings
+Dimension selected bearings:
+
+61802
+61802
+61902
+*6002
+*6202
+*6302
+
+Converting forces
+
+C = 5.01
+
+Bearings selected based on C rating:
+
+*6002
+*6202
+*6302
+
+Checking bearings
+
+Force correction needed
+
+Adjustment = 0.72638877193
+
+Current cal factor: 0.172
+Current cal factor: 0.345
+Current cal factor: 0.689
+Current cal factor: 1.03
+Adjustment < current cal factor: 
+
+
+e = 0.262192889849
+No force adjustment for *6002
+Adjustment = 0.512622933333
+
+Current cal factor: 0.172
+Current cal factor: 0.345
+Current cal factor: 0.689
+Adjustment < current cal factor: 
+
+
+e = 0.23949103876
+No force adjustment for *6202
+Adjustment = 0.328604444444
+
+Current cal factor: 0.172
+Current cal factor: 0.345
+Adjustment < current cal factor: 
+
+
+e = 0.217156840077
+No force adjustment for *6302
+Usable bearings:
+*6002     |Force:711.0 N
+*6202     |Force:711.0 N
+*6302     |Force:711.0 N
+No unsure bearings :)
+
+20/10/2018 14:19:07
+
+Iteration 1
+Shaft diameter (mm): 10
+Outer diameter (mm): 
+Part diameter (m): 0.064
+Design life (years): 0.0114
+Average use per day (hours): 0.5
+Radial force (N): 393.0
+Axial force (N): 0.0
+Average velocity (m/s): 4.0
+use_time  124.83
+revs      1193.66207319
+l_ten     0.149004836596
+
+Getting bearings
+Dimension selected bearings:
+
+61800
+61900
+*6000
+16100
+*6200
+*6300
+
+Converting forces
+
+C = 0.21
+
+Bearings selected based on C rating:
+
+61800
+61900
+*6000
+16100
+*6200
+*6300
+
+Checking bearings
+
+
+No force correction needed because one force was given
+
+Usable bearings:
+61800
+61900
+*6000
+16100
+*6200
+*6300
