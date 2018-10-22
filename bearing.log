@@ -1,277 +1,5 @@
 
-05/02/2018 22:32:16
-
-Iteration 1
-Shaft diameter (mm): 12
-Outer diameter (mm): 
-Part diameter (m): 0.62
-Design life (years): 10.0
-Average use per day (hours): 2.0
-Radial force (N): 900.0
-Axial force (N): 300.0
-Average velocity (m/s): 16.67
-use_time  438000.0
-revs      513.50572284
-l_ten     224.915506604
-
-Getting bearings
-Dimension selected bearings:
-
-61801
-61901
-*6001
-16101
-*6201
-*6301
-
-Converting forces
-
-C = 5.47
-
-Bearings selected based on C rating:
-
-*6201
-*6301
-
-Checking bearings
-
-Force correction needed
-
-Adjustment = 1.16129032258
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Current cal factor: 1.03
-Current cal factor: 1.38
-Adjustment < current cal factor: 
-
-
-e = 0.287502304147
-fa/fr > e
-X = 0.56    Y = 1.51248847926
-Corrected force = 957.746543779
-C_min = 5824.47867579
-*6201 is suitable
-Adjustment = 0.795180722892
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Current cal factor: 1.03
-Adjustment < current cal factor: 
-
-
-e = 0.266227608381
-fa/fr > e
-X = 0.56    Y = 1.66017913295
-Corrected force = 1002.05373989
-C_min = 6093.93025522
-*6301 is suitable
-Usable bearings:
-*6201     |Force:958.0 N
-*6301     |Force:1002.0 N
-No unsure bearings :)
-
-18/02/2018 18:52:38
-
-Iteration 1
-Shaft diameter (mm): 12
-Outer diameter (mm): 
-Part diameter (m): 0.48
-Design life (years): 10.0
-Average use per day (hours): 8.0
-Radial force (N): 900.0
-Axial force (N): 300.0
-Average velocity (m/s): 16.67
-use_time  1752000.0
-revs      663.278225335
-l_ten     1162.06345079
-
-Getting bearings
-Dimension selected bearings:
-
-61801
-61901
-*6001
-16101
-*6201
-*6301
-
-Converting forces
-
-C = 9.46
-
-Bearings selected based on C rating:
-
-*6301
-
-Checking bearings
-
-Force correction needed
-
-Adjustment = 0.795180722892
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Current cal factor: 1.03
-Adjustment < current cal factor: 
-
-
-e = 0.266227608381
-fa/fr > e
-X = 0.56    Y = 1.66017913295
-Corrected force = 1002.05373989
-C_min = 10534.9940319
-*6301 is not suitable
-No bearings are suitable for this situations
-Iteration 2
-
-18/02/2018 18:59:54
-
-Iteration 1
-
-18/02/2018 19:01:44
-
-Iteration 1
-Shaft diameter (mm): 17
-Outer diameter (mm): 
-Part diameter (m): 0.48
-Design life (years): 10.0
-Average use per day (hours): 8.0
-Radial force (N): 711.225
-Axial force (N): 151.1755
-Average velocity (m/s): 5.0
-use_time  1752000.0
-revs      198.943678865
-l_ten     348.549325371
-
-Getting bearings
-Dimension selected bearings:
-
-61803
-61903
-*16003
-*6003
-*6203
-6203 ETN9
-*6303
-6403
-
-Converting forces
-
-C = 5.01
-
-Bearings selected based on C rating:
-
-*16003
-*6003
-*16003
-*6003
-*6203
-6203 ETN9
-*6303
-6403
-
-Checking bearings
-
-Force correction needed
-
-Adjustment = 0.651217538462
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.255606690519
-No force adjustment for *16003
-Adjustment = 0.651217538462
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.255606690519
-No force adjustment for *6003
-Adjustment = 0.651217538462
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.255606690519
-No force adjustment for *16003
-Adjustment = 0.651217538462
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.255606690519
-No force adjustment for *6003
-Adjustment = 0.413743473684
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.227993427173
-No force adjustment for *6203
-Adjustment = 0.335945555556
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Adjustment < current cal factor: 
-
-
-e = 0.218429865125
-No force adjustment for 6203 ETN9
-Adjustment = 0.276962748092
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Adjustment < current cal factor: 
-
-
-e = 0.208201632617
-fa/fr > e
-X = 0.56    Y = 2.11191646296
-Corrected force = 717.556027246
-C_min = 5049.83551342
-*6303 is suitable
-Adjustment = 0.153975046296
-
-Current cal factor: 0.172
-Adjustment < current cal factor: 
-
-
-
-The value of adjustment to interpolate for e is outside of the range of the data we have!
-moving onto the next bearing and excluding this one
-
-Usable bearings:
-*16003    |Force: 711.0 N
-*6003     |Force: 711.0 N
-*16003    |Force: 711.0 N
-*6003     |Force: 711.0 N
-*6203     |Force: 711.0 N
-6203 ETN9 |Force: 711.0 N
-*6303     |Force: 718.0 N
-Unsure bearings:
-6403
-
-18/02/2018 19:05:17
+18/02/2018 21:53:59
 
 Iteration 1
 Shaft diameter (mm): 15
@@ -280,7 +8,7 @@ Part diameter (m): 0.48
 Design life (years): 10.0
 Average use per day (hours): 8.0
 Radial force (N): 711.225
-Axial force (N): 151.1755
+Axial force (N): 147.872
 Average velocity (m/s): 5.0
 use_time  1752000.0
 revs      198.943678865
@@ -310,7 +38,7 @@ Checking bearings
 
 Force correction needed
 
-Adjustment = 0.742616491228
+Adjustment = 0.72638877193
 
 Current cal factor: 0.172
 Current cal factor: 0.345
@@ -319,9 +47,9 @@ Current cal factor: 1.03
 Adjustment < current cal factor: 
 
 
-e = 0.263144662242
+e = 0.262192889849
 No force adjustment for *6002
-Adjustment = 0.524075066667
+Adjustment = 0.512622933333
 
 Current cal factor: 0.172
 Current cal factor: 0.345
@@ -329,119 +57,8 @@ Current cal factor: 0.689
 Adjustment < current cal factor: 
 
 
-e = 0.240822682171
+e = 0.23949103876
 No force adjustment for *6202
-Adjustment = 0.335945555556
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Adjustment < current cal factor: 
-
-
-e = 0.218429865125
-No force adjustment for *6302
-Usable bearings:
-*6002     |Force: 711.0 N
-*6202     |Force: 711.0 N
-*6302     |Force: 711.0 N
-No unsure bearings :)
-
-19/02/2018 22:23:22
-
-Iteration 1
-Shaft diameter (mm): 17
-Outer diameter (mm): 
-Part diameter (m): 0.48
-Design life (years): 10.0
-Average use per day (hours): 8.0
-Radial force (N): 711.225
-Axial force (N): 147.872
-Average velocity (m/s): 5.0
-use_time  1752000.0
-revs      198.943678865
-l_ten     348.549325371
-
-Getting bearings
-Dimension selected bearings:
-
-61803
-61903
-*16003
-*6003
-*6203
-6203 ETN9
-*6303
-6403
-
-Converting forces
-
-C = 5.01
-
-Bearings selected based on C rating:
-
-*16003
-*6003
-*16003
-*6003
-*6203
-6203 ETN9
-*6303
-6403
-
-Checking bearings
-
-Force correction needed
-
-Adjustment = 0.636987076923
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.253951985689
-No force adjustment for *16003
-Adjustment = 0.636987076923
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.253951985689
-No force adjustment for *6003
-Adjustment = 0.636987076923
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.253951985689
-No force adjustment for *16003
-Adjustment = 0.636987076923
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.253951985689
-No force adjustment for *6003
-Adjustment = 0.404702315789
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.226942129743
-No force adjustment for *6203
 Adjustment = 0.328604444444
 
 Current cal factor: 0.172
@@ -450,201 +67,50 @@ Adjustment < current cal factor:
 
 
 e = 0.217156840077
-No force adjustment for 6203 ETN9
-Adjustment = 0.270910534351
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Adjustment < current cal factor: 
-
-
-e = 0.207152115783
-fa/fr > e
-X = 0.56    Y = 2.12276147024
-Corrected force = 712.182984127
-C_min = 5012.02246061
-*6303 is suitable
-Adjustment = 0.15061037037
-
-Current cal factor: 0.172
-Adjustment < current cal factor: 
-
-
-
-The value of adjustment to interpolate for e is outside of the range of the data we have!
-moving onto the next bearing and excluding this one
-
+No force adjustment for *6302
 Usable bearings:
-*16003    |Force: 711.0 N
-*6003     |Force: 711.0 N
-*16003    |Force: 711.0 N
-*6003     |Force: 711.0 N
-*6203     |Force: 711.0 N
-6203 ETN9 |Force: 711.0 N
-*6303     |Force: 712.0 N
-Unsure bearings:
-6403
-
-19/02/2018 22:24:48
-
-Iteration 1
-Shaft diameter (mm): 12
-Outer diameter (mm): 
-Part diameter (m): 0.48
-Design life (years): 10.0
-Average use per day (hours): 8.0
-Radial force (N): 711.225
-Axial force (N): 147.872
-Average velocity (m/s): 5.0
-use_time  1752000.0
-revs      198.943678865
-l_ten     348.549325371
-
-Getting bearings
-Dimension selected bearings:
-
-61801
-61901
-*6001
-16101
-*6201
-*6301
-
-Converting forces
-
-C = 5.01
-
-Bearings selected based on C rating:
-
-16101
-*6001
-*6201
-*6301
-
-Checking bearings
-
-Force correction needed
-
-Adjustment = 0.814549152542
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Current cal factor: 1.03
-Adjustment < current cal factor: 
-
-
-e = 0.267363586659
-No force adjustment for 16101
-Adjustment = 0.814549152542
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Current cal factor: 1.03
-Adjustment < current cal factor: 
-
-
-e = 0.267363586659
-No force adjustment for *6001
-Adjustment = 0.572407741935
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.24644276069
-No force adjustment for *6201
-Adjustment = 0.391949879518
-
-Current cal factor: 0.172
-Current cal factor: 0.345
-Current cal factor: 0.689
-Adjustment < current cal factor: 
-
-
-e = 0.225459288316
-No force adjustment for *6301
-Usable bearings:
-16101     |Force: 711.0 N
-*6001     |Force: 711.0 N
-*6201     |Force: 711.0 N
-*6301     |Force: 711.0 N
+*6002     |Force:711.0 N
+*6202     |Force:711.0 N
+*6302     |Force:711.0 N
 No unsure bearings :)
 
-20/02/2018 13:45:58
+20/10/2018 14:19:07
 
 Iteration 1
-
-19/10/2018 12:49:18
-
-Iteration 1
-Shaft diameter (mm): 6
-Outer diameter (mm): 15
-Part diameter (m): 0.032
-Design life (years): 0.011
-Average use per day (hours): 0.5
-Radial force (N): 392.0
-Axial force (N): 0.0
-Average velocity (m/s): 4.0
-use_time  120.45
-revs      2387.32414638
-l_ten     0.287553193431
-
-Getting bearings
-Dimension selected bearings:
-
-619/6
-
-Converting forces
-
-C = 0.26
-
-Bearings selected based on C rating:
-
-619/6
-
-Checking bearings
-
-
-No force correction needed because one force was given
-
-Usable bearings:
-619/6
-
-19/10/2018 13:06:07
-
-Iteration 1
-Shaft diameter (mm): 6
+Shaft diameter (mm): 10
 Outer diameter (mm): 
-Part diameter (m): 0.032
+Part diameter (m): 0.064
 Design life (years): 0.0114
 Average use per day (hours): 0.5
-Radial force (N): 392.0
+Radial force (N): 393.0
 Axial force (N): 0.0
 Average velocity (m/s): 4.0
 use_time  124.83
-revs      2387.32414638
-l_ten     0.298009673192
+revs      1193.66207319
+l_ten     0.149004836596
 
 Getting bearings
 Dimension selected bearings:
 
-618/6
-619/6
-*626
+61800
+61900
+*6000
+16100
+*6200
+*6300
 
 Converting forces
 
-C = 0.26
+C = 0.21
 
 Bearings selected based on C rating:
 
-618/6
-619/6
-*626
+61800
+61900
+*6000
+16100
+*6200
+*6300
 
 Checking bearings
 
@@ -652,6 +118,9 @@ Checking bearings
 No force correction needed because one force was given
 
 Usable bearings:
-618/6
-619/6
-*626
+61800
+61900
+*6000
+16100
+*6200
+*6300
